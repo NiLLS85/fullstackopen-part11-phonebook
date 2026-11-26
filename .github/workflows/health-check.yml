@@ -1,0 +1,24 @@
+name: Periodic health check
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL que se comprueba'
+        required: false
+        default: 'https://phonebook-fso-t3uq.onrender.com/health'
+  schedule:
+    # Una vez al día (07:30 UTC) para no gastar minutos gratis de Actions.
+    - cron: '30 7 * * *'
+
+jobs:
+  health_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the deployed service URL
+        uses: Jtalk/url-health-check-action@e7d5ebdc9027fbf494d2d034f3e8fc78f8b7a2b9 # v5
+        with:
+          url: ${{ github.event.inputs.url || 'https://phonebook-fso-t3uq.onrender.com/health' }}
+          # El plan gratis de Render tarda hasta un minuto en despertar.
+          max-attempts: 4
+          retry-delay: 30s
