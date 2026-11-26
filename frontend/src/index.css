@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+  margin: 1rem;
+}
+
+.persons {
+  list-style: none;
+  padding: 0;
+}
+
+.persons li {
+  margin-bottom: 0.3rem;
+}
+
+.notification {
+  font-size: 1.1rem;
+  background: #f2f2f2;
+  border: 2px solid;
+  border-radius: 6px;
+  padding: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.notification.success {
+  color: #1d7a1d;
+}
+
+.notification.error {
+  color: #b3261e;
+}

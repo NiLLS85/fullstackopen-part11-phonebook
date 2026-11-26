@@ -1,0 +1,22 @@
+GET http://localhost:3001/api/persons
+
+###
+GET http://localhost:3001/info
+
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Grace Hopper",
+  "number": "040-1234567"
+}
+
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Al",
+  "number": "1-22334455"
+}
