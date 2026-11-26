@@ -15,6 +15,8 @@ Los demás ejercicios de la parte 11 están en [NiLLS85/fullstackopen-part11](ht
 3. **deploy:** solo en `main` y si ningún commit lleva `#skip`. Avisa a Render con un *deploy hook* guardado como secreto (`RENDER_DEPLOY_HOOK`). Render comprueba `/health` antes de dar por buena la versión nueva.
 4. **tag_release:** sube la versión (patch por defecto) y crea la etiqueta con `anothrNick/github-tag-action`, fijada por hash.
 
+Además, `.github/workflows/health-check.yml` comprueba una vez al día que la versión publicada responde en `/health` (con varios reintentos, porque el plan gratis de Render tarda en despertar). También se puede lanzar a mano desde la pestaña Actions.
+
 En Render el servicio usa la raíz del repositorio, con `npm install && npm run build` como comando de compilación (instala el backend y compila el frontend en `frontend/dist`, que sirve Express) y `npm start` para arrancar. El despliegue automático de Render está apagado: solo despliega el pipeline.
 
 La rama `main` está protegida: los cambios entran por pull request, con las comprobaciones en verde y la revisión de otra persona.
